@@ -15,7 +15,7 @@ def resource_dependent_model(molecules,t,alpha,beta,K,KTL,KTX,lamb1,lamb2):
     )
     
 
-def resource_dependent_saturation_model(molecules,t,alpha,beta,K,KTL,KTX,lamb1,lamb2):
+def resource_dependent_saturat_model(molecules,t,alpha,beta,K,KTL,KTX,lamb1,lamb2):
     R,dT,dG,mT,mG,pT,pG,TX,TL = molecules
     return np.array(
         [
