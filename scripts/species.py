@@ -1,17 +1,28 @@
+#class of different species
+# ic : initial concentration
+# lc : loading concentration
+# pr : production rate 
+# dr : degradation rate
 class DNA:
-    a=4
-    def printh() :
-        print('hey')
+    ic = 0
+    lc = 0
+    dr = 0
 
 
 class RNA:
-    0
+    ic = 0
+    lc = 0
+    pr = 0
+    dr = 0
 
 
 
-class Protin: 
-    0
-
+class Protein: 
+    ic = 0
+    lc = 0
+    pr = 0
+    dr = 0
 
 class Resource:
-    0
+    ic = 100
+    lc = 100
