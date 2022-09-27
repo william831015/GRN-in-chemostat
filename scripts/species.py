@@ -16,7 +16,6 @@ class RNA:
     dr = 0
 
 
-
 class Protein: 
     ic = 0
     lc = 0
