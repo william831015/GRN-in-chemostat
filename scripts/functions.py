@@ -1,13 +1,16 @@
-def dilution(species, dilution_ratio):
+def dilution(molecule, dilution_ratio):
+
+    molecule_diluted = molecule*(1-dilution_ratio)
+
+    return molecule_diluted
 
 
-    return 0
 
+def replenish(molecule_replenished, dilution_ratio, replenish_conc) : 
 
+    molecule_replenished = replenish_conc * dilution_ratio
 
-def replenish(species, dilution_ratio) : 
-
-    return 0; 
+    return molecule_replenished;
 
 
 
