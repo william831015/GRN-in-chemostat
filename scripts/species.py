@@ -9,6 +9,7 @@ class DNA:
     ic = 0
     lc = 0
     dr = 0
+    result =[]
 
 
 class RNA:
@@ -16,6 +17,7 @@ class RNA:
     ic = 0
     lc = 0
     dr = 0
+    result =[]
 
 
 class Protein: 
@@ -23,7 +25,9 @@ class Protein:
     ic = 0
     lc = 0
     dr = 0
+    result =[]
 
 class Resource:
     ic = 100
     lc = 100
+    result =[]
