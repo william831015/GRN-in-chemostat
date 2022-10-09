@@ -10,6 +10,6 @@ def replenish(molecule_replenished, dilution_ratio, replenish_conc) :
 
     return molecule_replenished
 
-def dilute_out_species(molecules,DR=0.2):
+def dilute_out_species(molecules,molecules_0,DR=0.2):
     for i in (molecules):
-        i = dilution(i,DR)
+        molecules_0[i.idx] = dilution(molecules_0[i.idx],DR)
