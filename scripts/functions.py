@@ -1,8 +1,8 @@
-def dilute(molecule_diluted,molecules_0,DR=0.2):
+def dilute(molecule_diluted,molecules_0,DR=0.2):  #input Object want to dilute and where the parameters is stored 
     
     molecules_0[molecule_diluted.idx] *= (1-DR)
 
-def replenish(molecule_replenished, molecules_0, DR=0.2) : 
+def replenish(molecule_replenished, molecules_0, DR=0.2) : #input Object want to replenish and where the parameters is stored 
 
     molecules_0[molecule_replenished.idx] += molecule_replenished.lc * DR
 
