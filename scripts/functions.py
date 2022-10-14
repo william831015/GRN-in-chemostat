@@ -1,3 +1,7 @@
+import numpy as np
+import scipy.integrate
+import scipy.optimize
+
 def dilute(molecule_diluted,molecules_0,DR=0.2):  #input Object want to dilute and where the parameters is stored 
     
     molecules_0[molecule_diluted.idx] *= (1-DR)
@@ -17,9 +21,11 @@ def replenish_species(molecules_replenished, molecules_0, DR=0.2) :   #replenish
         replenish(molecule,molecules_0,DR)
 
 
-def run(model,t,molecules_0,dilute_list,replenish_list,result_all):  
 
-    for n in range (Switch_cycle[0],Switch_cycle[1]):
+def run_model(model,t,parameters_list,molecules_0,dilute_list,replenish_list,result_all):  
+    start_cycle,end_cycle = np.array(t)*4
+    for n in range (start_cycle,end_cycle):
+        print(n)
         #define time
         t_start= n*15
         t_end = (n+1)*15
@@ -38,9 +44,5 @@ def run(model,t,molecules_0,dilute_list,replenish_list,result_all):
         
         ###replenish 
         replenish_species((replenish_list),molecules_0)
-        
-
+    return result_all,molecules_0
     
-
-
-    return result_all, molecules_0
