@@ -2,8 +2,6 @@
 
 import numpy as np
 
-
-
 #The simplest model of resource dependent model
 def resource_dependent_model(molecules,t,alpha,beta,K,KTL,KTX,lamb1,lamb2):
     R,dT,dG,mT,mG,pT,pG,TX,TL = molecules
