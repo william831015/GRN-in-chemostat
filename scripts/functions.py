@@ -7,17 +7,17 @@ def replenish(molecule_replenished, molecules_0, DR=0.2) : #input Object want to
     molecules_0[molecule_replenished.idx] += molecule_replenished.lc * DR
 
 
-def dilute_out_species(molecules_diluted,molecules_0,DR=0.2):  #dilute a list of molecules
+def dilute_species(molecules_diluted,molecules_0,DR=0.2):  #dilute a list of molecules
     for molecule in (molecules_diluted):
         dilute(molecule,molecules_0,DR)
 
-def replenish_species(molecules, molecules_0, DR=0.2) :   #replenish a list of molecules
+def replenish_species(molecules_replenished, molecules_0, DR=0.2) :   #replenish a list of molecules
 
-   for i in (molecules):
-        replenish(molecules_0[i.idx],DR)
+   for molecule in (molecules_replenished):
+        replenish(molecule,molecules_0,DR)
 
 
-def run(model,t,molecules_0,molecules_list,dilution_list,replenish_list,result_all):  
+def run(model,t,molecules_0,dilute_list,replenish_list,result_all):  
 
     for n in range (Switch_cycle[0],Switch_cycle[1]):
         #define time
@@ -26,19 +26,21 @@ def run(model,t,molecules_0,molecules_list,dilution_list,replenish_list,result_a
         t= np.linspace(t_start,t_end,2)
 
         #solve equation and save result
-        result = scipy.integrate.odeint(Repressor_model, molecules_0, t, args=parameters_list)
+        result = scipy.integrate.odeint(model, molecules_0, t, args=parameters_list)
         result_all = np.append(result_all,result[1])
         
         #update parameter
         molecules_0 = result.transpose()[:,-1]
         
         #dilution 
+        ###diute out
+        dilute_species((dilute_list),molecules_0)
+        
         ###replenish 
-        molecules_0[R.idx] = R.ic*DR+(1-DR)*molecules_0[R.idx]
+        replenish_species((replenish_list),molecules_0)
         
 
-        ###diute out
-        dilute_out_species((T7_RNA,GFP,GFP_RNA,Repressor,Repressor_RNA),molecules_0)
+    
 
 
     return result_all, molecules_0
