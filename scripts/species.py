@@ -10,6 +10,8 @@ class DNA:
     lc = 0
     dr = 0
     result =[]
+    pc_result = []
+    nc_result = []
 
 
 class RNA:
@@ -18,6 +20,8 @@ class RNA:
     lc = 0
     dr = 0
     result =[]
+    pc_result = []
+    nc_result = []
 
 
 class Protein: 
@@ -26,8 +30,12 @@ class Protein:
     lc = 0
     dr = 0
     result =[]
+    pc_result = []
+    nc_result = []
 
 class Resource:
     ic = 100
     lc = 100
     result =[]
+    pc_result = []
+    nc_result = []

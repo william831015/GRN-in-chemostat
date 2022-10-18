@@ -1,6 +1,10 @@
 import numpy as np
 import scipy.integrate
 import scipy.optimize
+import bokeh.plotting
+from bokeh.plotting import figure, output_file, show
+import bokeh.io
+from bokeh.models import Span
 
 def dilute(molecule_diluted,molecules_0,DR=0.2):  #input Object want to dilute and where the parameters is stored 
         molecules_0[molecule_diluted.idx] *= (1-DR)
@@ -22,7 +26,6 @@ def replenish_species(molecules_replenished, molecules_0, DR=0.2) :   #replenish
 
 def run_model(model,t,parameters_list,molecules_0,dilute_list,replenish_list,result_all):  
     start_cycle,end_cycle = np.array(t)*4
-    print(molecules_0)
     for n in range (start_cycle,end_cycle):
         #define time
         t_start= n*15
@@ -42,6 +45,27 @@ def run_model(model,t,parameters_list,molecules_0,dilute_list,replenish_list,res
         
         ###replenish 
         replenish_species((replenish_list),molecules_0)
-    print(molecules_0)
     return result_all,molecules_0
     
+
+def plot_result(molecule):
+    t = np.linspace(0, 15*(len(molecule)-1), len(molecule))
+    p = bokeh.plotting.figure(
+        plot_width=800,
+        plot_height=400,
+        x_axis_label="t",
+        y_axis_type="linear",
+    )
+
+    colors = bokeh.palettes.d3["Category10"][3]
+
+    # Populate glyphs
+    p.line(
+        t/60, molecule, line_width=2, color=colors[0]
+    )
+    vline1 = Span(location=4, dimension='height', line_color='black', line_width=1,line_dash='dashed')
+    vline2 = Span(location=16, dimension='height', line_color='black', line_width=1,line_dash='dashed')
+    p.add_layout(vline1)
+    p.add_layout(vline2)
+    show(p)
+
