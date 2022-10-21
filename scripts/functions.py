@@ -69,3 +69,24 @@ def plot_result(molecule):
     p.add_layout(vline2)
     show(p)
 
+
+def plot_result_two_state(molecule):
+    t = np.linspace(0, 15*(len(molecule)-1), len(molecule))
+    p = bokeh.plotting.figure(
+        plot_width=800,
+        plot_height=400,
+        x_axis_label="t",
+        y_axis_type="linear",
+    )
+
+    colors = bokeh.palettes.d3["Category10"][3]
+
+    # Populate glyphs
+    p.line(
+        t/60, molecule, line_width=2, color=colors[0]
+    )
+    vline1 = Span(location=4, dimension='height', line_color='black', line_width=1,line_dash='dashed')
+    #vline2 = Span(location=16, dimension='height', line_color='black', line_width=1,line_dash='dashed')
+    p.add_layout(vline1)
+    #p.add_layout(vline2)
+    show(p)

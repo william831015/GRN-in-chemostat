@@ -44,7 +44,7 @@ def Repressor_model(molecules,t,alpha,beta,K,Kr,KTL,KTX,lamb1,lamb2):
     return np.array(
         [
             0,
-            alpha*TX*T7_DNA*T7*R/(R+K)*(Kr**0.2/(Repressor+Kr**0.2)),
+            alpha*TX*T7_DNA*T7*R/(R+K)*(Kr**1/(Repressor+Kr**1)),
             beta*TL*T7_RNA*(R/(R+K)),
             0,
             alpha*TX*GFP_DNA*T7*R/(R+K),
