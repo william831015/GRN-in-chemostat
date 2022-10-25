@@ -76,7 +76,24 @@ def Repressor_model_HC(molecules,t,alpha,beta,K,HC,Kr,KTL,KTX,lamb1,lamb2):
     )
     
 
-
+def Repressor_model_HC_TH(molecules,t,alpha,beta,K,HC,Kr,KTL,KTX,lamb1,lamb2):
+    T7_DNA,T7_RNA,T7,GFP_DNA,GFP_RNA,GFP,Repressor_DNA,Repressor_RNA,Repressor,R = molecules
+    TX = 1
+    TL = 1
+    return np.array(
+        [
+            0,
+            alpha*TX*T7_DNA*T7*R/(R+K),
+            beta*TL*T7_RNA*(R/(R+K))*(Kr/(Repressor**HC+Kr)),
+            0,
+            alpha*TX*GFP_DNA*T7*R/(R+K),
+            beta*TL*GFP_RNA*R/(R+K),
+            0,
+            alpha*TX*Repressor_DNA*T7*R/(R+K),
+            beta*TL*Repressor_RNA*R/(R+K),
+            -alpha*TX*T7_DNA*T7*R/(R+K)-alpha*TX*GFP_DNA*T7*R/(R+K)-alpha*TX*Repressor_DNA*T7*R/(R+K)-beta*TL*T7_RNA*R/(R+K)-beta*TL*GFP_RNA*R/(R+K)-beta*TL*Repressor_RNA*R/(R+K),
+        ]
+    )
 
 def Repressor_model_resources_nonrelated(molecules,t,alpha,beta,K,HC,Kr,KTL,KTX,lamb1,lamb2):
     T7_DNA,T7_RNA,T7,GFP_DNA,GFP_RNA,GFP,Repressor_DNA,Repressor_RNA,Repressor,R = molecules
