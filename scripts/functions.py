@@ -70,6 +70,9 @@ def plot_result(molecule):
     show(p)
 
 
+
+
+
 def plot_result_two_state(molecule):
     t = np.linspace(0, 15*(len(molecule)-1), len(molecule))
     p = bokeh.plotting.figure(
