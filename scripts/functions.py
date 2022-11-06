@@ -24,7 +24,7 @@ def replenish_species(molecules_replenished, molecules_0, DR=0.2) :   #replenish
 
 
 
-def run_model(model,t,parameters_list,molecules_0,dilute_list,replenish_list,result_all):  
+def run_model(model,t,parameters_list,molecules_0,dilute_list,replenish_list,result_all,DR=0.2):  
     start_cycle,end_cycle = np.array(t)*4
     for n in range (start_cycle,end_cycle):
         #define time
@@ -41,10 +41,10 @@ def run_model(model,t,parameters_list,molecules_0,dilute_list,replenish_list,res
         
         #dilution 
         ###diute out
-        dilute_species((dilute_list),molecules_0)
+        dilute_species((dilute_list),molecules_0,DR)
         
         ###replenish 
-        replenish_species((replenish_list),molecules_0)
+        replenish_species((replenish_list),molecules_0,DR)
     return result_all,molecules_0
     
 
